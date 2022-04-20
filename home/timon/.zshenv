@@ -23,7 +23,7 @@ else
 fi
 export EDITOR
 
-# Export other variables
+# Export other environment variables
 export LANG=en_US.UTF-8
 export LIBVIRT_DEFAULT_URI="qemu:///system"
 export BROWSER="firefox"
