@@ -1,17 +1,11 @@
 #########################
 # Environment variables #
 #########################
-# Export PATH the zsh way
-typeset -U path PATH
-path=(
-	~/bin
-	~/.local/bin
-	/usr/bin
-	/usr/sbin
-	/usr/local/bin
-	/usr/local/sbin
-	/opt/scripts
-	$path)
+# Export PATH the zsh way -> path is a unique array and zsh syncs this array with PATH automatically
+typeset -U path
+path=(~/bin ~/.local/bin /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin)
+path+=(/opt/scripts)
+path+=($path)
 export PATH
 
 # Export EDITOR (SSH aware)
