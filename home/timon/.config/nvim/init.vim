@@ -12,6 +12,9 @@ filetype plugin indent on
 " set encoding
 set encoding=UTF-8
 
+" turn on spell checking by default
+set spell spelllang=en_us,de_at
+
 " make command completion work as intuitiv
 set wildmode=longest,list,full
 
@@ -38,17 +41,6 @@ set shiftwidth=4
 set softtabstop=4
 set smarttab
 set autoindent
-
-
-
-""""""""""""""""""""""""""""""""
-" personal preference settings "
-""""""""""""""""""""""""""""""""
-" turn on spell checking by default
-set spell spelllang=en_us,de_at
-
-" disable automatic commenting on newline
-set formatoptions-=c formatoptions-=r formatoptions-=o
 
 
 
@@ -105,13 +97,16 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 " leader mappings "
 """""""""""""""""""
 let mapleader=" "
-let maplocalleader = ","
+let maplocalleader=","
 
 
 
 """""""""""""
 " key binds "
 """""""""""""
+" key binding for placeholders
+nnoremap <leader><leader> /<++><CR>da<i
+
 " key bindings for NERDTree
 nnoremap <C-e> :NERDTreeToggle<CR>
 
