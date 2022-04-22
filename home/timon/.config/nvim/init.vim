@@ -31,6 +31,12 @@ set termguicolors
 " enable relative line numeration for all other lines relative to the current line
 set number relativenumber
 
+" disable default mode indication because vim-airline plugin already displays it
+set noshowmode
+
+" disable default cursor line and column information indication because vim-airline plugin already displays it
+set noruler
+
 
 
 """""""""""""""""""
