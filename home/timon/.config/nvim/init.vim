@@ -111,7 +111,8 @@ let maplocalleader=","
 " key binds "
 """""""""""""
 " key binding for placeholders
-nnoremap <leader><leader> /<++><CR>da<i
+" no delete command is being used so that the copy register is not filled with \"<++>\"
+nnoremap <leader><leader> /<CR>llla<Backspace><Backspace><Backspace><Backspace>
 
 " key bindings for NERDTree
 nnoremap <C-e> :NERDTreeToggle<CR>
@@ -137,6 +138,7 @@ call plug#begin()
 	Plug 'Mofiqul/dracula.nvim'
 	" feature plugins
 	Plug 'preservim/nerdtree'
+	Plug 'tpope/vim-surround'
 	" latex plugins
 	Plug 'lervag/vimtex'
 call plug#end()
@@ -155,4 +157,4 @@ let g:airline#extensions#tabline#formatter = 'unique_tail'
 let g:airline_theme='base16_dracula'
 
 " vimtex plugin configuration
-let g:vimtex_view_method = 'zathura'
+let g:vimtex_view_method = $READER

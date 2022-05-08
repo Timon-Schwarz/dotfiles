@@ -56,8 +56,8 @@ _comp_options+=(globdots)
 # Sudo alias -> Allow aliases to be run with sudo
 alias sudo='sudo '
 
-# Other aliases
-alias dotfiles='sudo git --git-dir=/home/timon/.bare-repositories/dotfiles/git --work-tree=/'
+# Dotfiles bare git repository alias
+alias dotfiles='sudo git --git-dir=$HOME/.bare-repositories/dotfiles/git --work-tree=/'
 
 
 
