@@ -22,7 +22,7 @@ local theme = {}
 ----------------------
 --		Fonts		--
 ----------------------
-theme.font = "Jetbrains Mono Nerd Font Small Medium 11"
+theme.font = "Jetbrains Mono Nerd Font Small 14"
 
 
 
@@ -50,7 +50,7 @@ theme.fg_minimize   = theme.fg_normal
 ----------------------
 --		Border		--
 ----------------------
-theme.useless_gap   = dpi(4)
+theme.useless_gap   = dpi(5)
 theme.border_width  = dpi(3)
 theme.border_normal = "#21222c" -- dracula black
 theme.border_focus  = "#8be9fd" -- dracula cyan
@@ -69,7 +69,7 @@ theme.wallpaper = "/usr/share/wallpaper/kali.svg"
 --		Taglist		--
 ----------------------
 -- Generate taglist squares
-local taglist_square_size = dpi(6)
+local taglist_square_size = dpi(8)
 theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
     taglist_square_size, theme.fg_normal
 )
