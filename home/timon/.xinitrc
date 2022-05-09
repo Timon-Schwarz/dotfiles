@@ -1,7 +1,7 @@
 #################################
 # Start background applications #
 #################################
-picom --daemon &
+picom --daemon --experimental-backends &
 thunar --daemon &
 
 

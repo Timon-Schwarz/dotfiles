@@ -1,18 +1,21 @@
 ----------------------
 --		Require		--
 ----------------------
-local theme_assets	= require("beautiful.theme_assets")
-local xresources	= require("beautiful.xresources")
-local gfs =			= require("gears.filesystem")
+local theme_assets = require("beautiful.theme_assets")
+local xresources = require("beautiful.xresources")
+local dpi = xresources.apply_dpi
+local gfs = require("gears.filesystem")
+local themes_path = gfs.get_themes_dir()
+local theme = {}
 
 
 
 --------------------------
 --		Variables		--
 --------------------------
-local dpi			= xresources.apply_dpi
-local themes_path	= gfs.get_themes_dir()
-local theme			= {}
+--local dpi			= xresources.apply_dpi
+--local themes_path	= gfs.get_themes_dir()
+--local theme			= {}
 
 
 
@@ -35,7 +38,7 @@ theme.bg_systray    = theme.bg_normal
 
 
 --------------------------
---		Forground		--
+--		Foreground		--
 --------------------------
 theme.fg_normal     = "#f8f8f2" -- dracula white
 theme.fg_focus      = theme.fg_normal
@@ -48,7 +51,7 @@ theme.fg_minimize   = theme.fg_normal
 --		Border		--
 ----------------------
 theme.useless_gap   = dpi(4)
-theme.border_width  = dpi(4)
+theme.border_width  = dpi(3)
 theme.border_normal = "#21222c" -- dracula black
 theme.border_focus  = "#8be9fd" -- dracula cyan
 theme.border_marked = "#50fa7b" -- dracula green
@@ -62,12 +65,25 @@ theme.border_marked = "#50fa7b" -- dracula green
 theme.wallpaper = "/usr/share/wallpaper/kali.svg"
 
 
+----------------------
+--		Taglist		--
+----------------------
+-- Generate taglist squares
+local taglist_square_size = dpi(6)
+theme.taglist_squares_sel = theme_assets.taglist_squares_sel(
+    taglist_square_size, theme.fg_normal
+)
+theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
+    taglist_square_size, theme.fg_normal
+)
+
+
 
 ----------------------
 --		Icons		--
 ----------------------
 -- Application icon theme
-theme.icon_theme = "/usr/share/icons/Papirus-Dark/"
+theme.icon_theme = nil
 
 -- Layout icons
 theme.layout_fairh		= themes_path.."default/layouts/fairhw.png"

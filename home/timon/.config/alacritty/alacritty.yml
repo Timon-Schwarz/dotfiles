@@ -7,7 +7,6 @@ window:
   class:
     instance: Alacritty
     general: Alacritty
-  opacity: 1
 
 # Scrolling
 scrolling:
