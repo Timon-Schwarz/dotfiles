@@ -1,7 +1,7 @@
 #################################
 # Start background applications #
 #################################
-thunar --daemon
+thunar --daemon &
 
 
 
