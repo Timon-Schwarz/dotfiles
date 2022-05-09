@@ -1,6 +1,7 @@
 #################################
 # Start background applications #
 #################################
+picom --daemon &
 thunar --daemon &
 
 
