@@ -99,32 +99,15 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 
 
-"""""""""""""""""""
-" leader mappings "
-"""""""""""""""""""
-let mapleader=" "
-let maplocalleader=","
-
-
-
-"""""""""""""
-" key binds "
-"""""""""""""
-" key binding for placeholders
-" no delete command is being used so that the copy register is not filled with \"<++>\"
-nnoremap <leader><leader> /<CR>llla<Backspace><Backspace><Backspace><Backspace>
-
-" key bindings for NERDTree
-nnoremap <C-e> :NERDTreeToggle<CR>
-
-" key bindings for spell checking
-nnoremap <leader>se :setlocal spell spelllang=en_us<CR>
-nnoremap <leader>sd :setlocal spell spelllang=de_at<CR>
-nnoremap <leader>sa :setlocal spell spelllang=en_us,de_at<CR>
-nnoremap <leader>sc :setlocal nospell<CR>
-
-" key bindings for commands
-nnoremap <leader>cr :%s//g<Left><Left>
+"""""""""""""""""""""""""""""""
+" plugin manager installation "
+"""""""""""""""""""""""""""""""
+if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
 
 
 
@@ -158,3 +141,32 @@ let g:airline_theme='base16_dracula'
 
 " vimtex plugin configuration
 let g:vimtex_view_method = $READER
+
+
+
+"""""""""""""""""""
+" leader mappings "
+"""""""""""""""""""
+let mapleader=" "
+let maplocalleader=","
+
+
+
+"""""""""""""
+" key binds "
+"""""""""""""
+" key binding for placeholders
+" no delete command is being used so that the copy register is not filled with \"<++>\"
+nnoremap <leader><leader> /<CR>llla<Backspace><Backspace><Backspace><Backspace>
+
+" key bindings for NERDTree
+nnoremap <C-e> :NERDTreeToggle<CR>
+
+" key bindings for spell checking
+nnoremap <leader>se :setlocal spell spelllang=en_us<CR>
+nnoremap <leader>sd :setlocal spell spelllang=de_at<CR>
+nnoremap <leader>sa :setlocal spell spelllang=en_us,de_at<CR>
+nnoremap <leader>sc :setlocal nospell<CR>
+
+" key bindings for commands
+nnoremap <leader>cr :%s//g<Left><Left>
