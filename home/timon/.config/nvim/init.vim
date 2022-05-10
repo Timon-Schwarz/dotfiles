@@ -119,6 +119,7 @@ call plug#begin()
 	Plug 'vim-airline/vim-airline'
 	Plug 'vim-airline/vim-airline-themes'
 	Plug 'Mofiqul/dracula.nvim'
+	Plug 'ryanoasis/vim-devicons'
 	" feature plugins
 	Plug 'preservim/nerdtree'
 	Plug 'tpope/vim-surround'
