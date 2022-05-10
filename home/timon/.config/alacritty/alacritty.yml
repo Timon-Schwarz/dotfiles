@@ -1,4 +1,6 @@
-# Window settings
+###############
+#   Window    #
+###############
 window:
   decorations: none
   padding:
@@ -9,12 +11,36 @@ window:
     general: Alacritty
   opacity: 0.8
 
-# Scrolling
+
+
+#################
+#   Scrolling   #
+#################
 scrolling:
   history: 10000
   multiplier: 3
 
-# Font settings -> Nerd Font required for things like vim-airline and Powerlevel10k
+
+
+#################
+#   Selection   #
+#################
+selection:
+  save_to_clipboard: false
+
+
+
+#############
+#   Shell   #
+#############
+shell:
+  program: /usr/bin/zsh
+
+
+
+#############
+#   Font    #
+#############
 font:
   normal:
     family: JetBrains Mono Nerd Font
@@ -31,7 +57,11 @@ font:
   size: 11
 draw_bold_text_with_bright_colors: true
 
-# Dracula Theme
+
+
+#############
+#   Theme   #
+#############
 colors:
   primary:
     background: '#282a36'
@@ -84,11 +114,3 @@ colors:
     magenta: '#ff92df'
     cyan: '#a4ffff'
     white: '#ffffff'
-
-# Selection settings
-selection:
-  save_to_clipboard: false
-
-# Shell settings
-shell:
-  program: /usr/bin/zsh
