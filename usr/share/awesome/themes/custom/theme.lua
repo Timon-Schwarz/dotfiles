@@ -22,7 +22,7 @@ local theme = {}
 ----------------------
 --		Fonts		--
 ----------------------
-theme.font = "Jetbrains Mono Nerd Font Small 14"
+theme.font = "Jetbrains Mono Nerd Font Medium 14"
 
 
 

@@ -10,6 +10,7 @@ done
 #############################
 #		Keyboard layout		#
 #############################
+# Set keyboard layout
 setxkbmap at -variant nodeadkeys
 
 
