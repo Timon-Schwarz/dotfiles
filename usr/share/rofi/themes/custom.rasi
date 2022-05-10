@@ -1,40 +1,50 @@
 * {
-  bg: #11121D;
-  bg-alt: #444b6a;
+  bg: #282a36cc;
+  bg-alt: #6272a4;
 
-  fg: #FFFFFF;
+  fg: #f8f8f2;
   fg-alt: #787c99;
 
-  background-color: @bg;
-
+  background-color: #00000000;
   border: 0;
   margin: 0;
   padding: 0;
   spacing: 0;
 }
 
+
+
 window {
   width: 30%;
 }
+
+
 
 element {
   padding: 8 0;
   text-color: @fg-alt;
 }
 
+
+
 element selected {
   text-color: @fg;
 }
 
+
+
 element-text {
-  background-color: inherit;
   text-color: inherit;
   vertical-align: 0.5;
 }
 
+
+
 element-icon {
   size: 30;
 }
+
+
 
 entry {
   background-color: @bg-alt;
@@ -42,21 +52,28 @@ entry {
   text-color: @fg;
 }
 
+
+
 inputbar {
   children: [prompt, entry];
 }
 
+
+
 listview {
-  padding: 8 12;
   background-color: @bg;
+  padding: 8 12;
   columns: 1;
-  lines: 8;
+  lines: 7;
 }
 
+
+
 mainbox {
-  background-color: @bg;
   children: [inputbar, listview];
 }
+
+
 
 prompt {
   background-color: @bg-alt;
