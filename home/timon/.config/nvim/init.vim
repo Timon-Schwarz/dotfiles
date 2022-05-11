@@ -50,6 +50,19 @@ set autoindent
 
 
 
+""""""""""""""""""""""""""
+" on enter auto commands "
+""""""""""""""""""""""""""
+augroup enterAutoCmdGroup
+	" clear this group to prevent duplicates
+	autocmd!
+
+	" fixes a bug that caused nvim to be sized improperly when started with 'alacritty -e nvim'
+	autocmd VimEnter * call timer_start(20, { tid -> execute(':silent exec "!kill -s SIGWINCH $PPID"')})
+augroup END
+
+
+
 """""""""""""""""""""""""""""""""""""""""
 " file extension specific auto commands "
 """""""""""""""""""""""""""""""""""""""""
