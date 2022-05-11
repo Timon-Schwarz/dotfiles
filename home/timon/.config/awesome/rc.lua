@@ -59,7 +59,7 @@ end
 modkey = "Mod4"
 
 -- Applications
-terminal = os.getenv("TERM")
+terminal = os.getenv("TERMINAL")
 editor = os.getenv("EDITOR")
 browser = os.getenv("BROWSER")
 reader = os.getenv("READER")

@@ -19,7 +19,7 @@ export EDITOR
 
 # Export other environment variables
 export LANG=en_US.UTF-8
-export TERM="alacritty"
+export TERMINAL="alacritty"
 export BROWSER="firefox"
 export READER="zathura"
 export FILEMANAGER="thunar"
