@@ -1,3 +1,4 @@
-TerminalEmulator=alacritty
+TerminalEmulator=custom-TerminalEmulator
 FileManager=thunar
 WebBrowser=firefox
+
