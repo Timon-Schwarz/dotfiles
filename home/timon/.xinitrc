@@ -7,14 +7,6 @@ done
 
 
 
-#############################
-#		Keyboard layout		#
-#############################
-# Set keyboard layout
-setxkbmap at -variant nodeadkeys
-
-
-
 #############################################
 #		Start background applications		#
 #############################################
@@ -29,6 +21,7 @@ thunar --daemon &
 #		Setup screens		#
 #############################
 /usr/local/bin/setupScreen.sh &
+
 
 
 #####################################
