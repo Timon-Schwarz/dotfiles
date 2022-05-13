@@ -585,3 +585,7 @@ systemctl enable snapper-cleanup.timer
 echo 'Done!'
 echo 'Type umount -a and exit. After that you can reboot into your new system.'
 echo 'Type startx after the reboot to start your graphical environment'
+echo 'Some files need to be added manually because they are not save for the internet.
+	This includes:
+	- /etc/swanctl/conf.d/secrets.conf
+	- /etc/ssh_host_*'
