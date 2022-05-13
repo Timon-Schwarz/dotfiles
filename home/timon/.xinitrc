@@ -7,6 +7,13 @@ done
 
 
 
+#####################################
+#		Import environments		#
+#####################################
+systemctl --user import-environment DISPLAY
+
+
+
 #############################################
 #		Start background applications		#
 #############################################

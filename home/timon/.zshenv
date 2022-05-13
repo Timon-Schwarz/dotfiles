@@ -19,8 +19,9 @@ export EDITOR
 
 # Export other environment variables
 export LANG=en_US.UTF-8
-export TERMINAL="alacritty"
-export BROWSER="firefox"
-export READER="zathura"
-export FILEMANAGER="thunar"
-export LIBVIRT_DEFAULT_URI="qemu:///system"
+export TERMINAL='alacritty'
+export BROWSER='firefox'
+export READER='zathura'
+export FILEMANAGER='thunar'
+export CM_LAUNCHER='rofi'
+export LIBVIRT_DEFAULT_URI='qemu:///system'

@@ -388,7 +388,14 @@ globalkeys = gears.table.join(globalkeys,
 		function()
 			awful.spawn(terminal)
 		end,
-		{description = "open a terminal", group = "launch"})
+		{description = "launch terminal", group = "launch"}),
+
+	-- Launch clipboard menu and paste
+    awful.key({modkey}, "v",
+		function()
+			awful.spawn.with_shell("clipmenu")
+		end,
+		{description = "launch clipboard menu", group = "launch"})
 )
 
 

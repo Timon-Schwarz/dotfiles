@@ -250,6 +250,19 @@ systemctl enable avahi-daemon
 
 
 
+#################
+#		VPN		#
+#################
+# Install Ike/IPsec VPN packages
+pacman -S strongswan
+
+# Install wireguard VPN packages
+# TODO
+
+# Install openVPN VPN packages
+# TODO
+
+
 #########################
 #		Firewall		#
 #########################
@@ -415,6 +428,9 @@ pacman -S arandr
 # Install menu packages
 pacman -S dialog rofi
 
+# Install rofi-dmenu compatibility packages
+paru -S rofi-dmenu
+
 
 
 #####################
@@ -472,7 +488,10 @@ pacman -S feh
 #		Clipboard		#
 #########################
 # Install clipboard packages
-pacman -S xclip
+pacman -S xclip clipmenu
+
+# Start clipmenud on boot
+systemctl --user enable clipmenud
 
 
 
