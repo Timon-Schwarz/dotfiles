@@ -362,6 +362,15 @@ pacman -S awesome
 
 
 #########################
+#		Auto login		#
+#########################
+# Auto login is already configured after cloning
+# But the username is probably wrong so we update it
+sed "s/\(--autologin\s\)\(\w*\)\(\s\)/\1$USERNAME\3/" /etc/systemd/system/getty@tty1.service.d/autologin.conf
+
+
+
+#########################
 #		Compositor		#
 #########################
 # Install compositor packages
@@ -528,6 +537,14 @@ pacman -S flameshot
 #############################
 # Install communication packages
 pacman -S dicord
+
+
+
+#########################
+#		Database		#
+#########################
+# Install database packages
+pacman -S mariadb
 
 
 
