@@ -1,3 +1,11 @@
+#################################
+#		Environment check		#
+#################################
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+
+
 ########################
 # Powerlevel10k plugin #
 ########################
