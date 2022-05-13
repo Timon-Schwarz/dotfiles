@@ -18,7 +18,7 @@ fi
 
 # Check if criteria for using Powerline10k prompt is met
 if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
-	# Source the plugin
+	# Source the theme
 	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 	# Source the prompt

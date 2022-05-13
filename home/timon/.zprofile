@@ -1,6 +1,6 @@
 #################################################
 #		Autostart X after login on tty 1		#
 #################################################
-if [[ "$(tty)" = "/dev/tty1" ]]; then
-	pgrep awesome || startx
+if [ -z "${DISPLAY}" ] && [ "${XDG_VTNR}" -eq 1 ]; then
+  exec startx
 fi
