@@ -14,6 +14,8 @@ KEYMAP='de-latin1-nodeadkeys'
 USERNAME=timon
 ROOT_PASSWORD=''
 IS_LAPTOP='true'
+GIT_USERNAME='Timon-Schwarz'
+GIT_EMAIL='timon.anmeldung@gmail.com'
 
 
 
@@ -67,6 +69,17 @@ timedatectl set-ntp true
 #####################
 # Set the root password (useful for system recovery when something breaks)
 echo "root:$ROOT_PASSWORD" | chpasswd
+
+
+
+#################
+#		Git		#
+#################
+# Update git username
+git config --global user.name "$GIT_USERNAME"
+
+# Update git username
+git config --global user.email "$GIT_EMAIL"
 
 
 

@@ -1,5 +1,5 @@
 [user]
-	email = timon.anmeldung@gmail.com
+	email =	timon.anmeldung@gmail.com
 	name = Timon-Schwarz
 [core]
 	editor = nvim
