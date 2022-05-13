@@ -1,9 +1,12 @@
 #####################################
 #		Source xinit scripts		#
 #####################################
-for f in /etc/X11/xinit/xinitrc.d/*.sh; do
-  source "$f"
-done
+if [ -d /etc/X11/xinit/xinitrc.d ] ; then
+ for f in /etc/X11/xinit/xinitrc.d/?*.sh ; do
+  [ -x "$f" ] && . "$f"
+ done
+ unset f
+fi
 
 
 
@@ -21,6 +24,7 @@ picom --daemon --experimental-backends &
 nm-applet &
 pnmixer &
 thunar --daemon &
+flameshot &
 
 
 
