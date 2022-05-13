@@ -390,12 +390,19 @@ globalkeys = gears.table.join(globalkeys,
 		end,
 		{description = "launch terminal", group = "launch"}),
 
-	-- Launch clipboard menu and paste
+	-- Launch clipboard menu
     awful.key({modkey}, "v",
 		function()
 			awful.spawn.with_shell("clipmenu")
 		end,
-		{description = "launch clipboard menu", group = "launch"})
+		{description = "launch clipboard menu", group = "launch"}),
+
+	-- Launch screenshot utility
+    awful.key({modkey}, "s",
+		function()
+			awful.spawn.with_shell("flameshot gui")
+		end,
+		{description = "launch screenshot utility", group = "launch"})
 )
 
 
