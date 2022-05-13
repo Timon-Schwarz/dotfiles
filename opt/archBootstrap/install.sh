@@ -8,6 +8,7 @@ set -x
 #		Variables		#
 #########################
 # Set variables
+CURRENT_USERNAME='timon'	# Do not change this
 TIMEZONE='Europe/Vienna'
 MIRROR_COUNTRIES='Austria,Germany'
 KEYBOARD_LAYOUT='at'
@@ -37,6 +38,18 @@ pacman -Sy \
 
 # Check software requirements
 # TODO: check if git is installed
+
+# Check if home directory is empty
+[[ rmdir "/home/$USERNAME" ]] \
+	|| error "The home directory of $USERNAME should be empty. Please remove all files and then run the script again"
+	&& exit 1
+
+
+
+#########################################
+#		Move to current home dir		#
+#########################################
+mv "/home/$CURRENT_USERNAME" "/home/$USERNAME"
 
 
 
