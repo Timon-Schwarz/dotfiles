@@ -27,10 +27,13 @@ pacman -Sy \
 	|| error "To run this script you need to be logged in as root on an arch system with internet connection. At least one does not seem to apply. Exiting..." \
 	&& exit 1
 
-# Check prerequisites
+# Check user requirements
 [[ id "$USERNAME" ]] \
 	|| error "The specified user "$USERNAME" does not exist. Please create it and then run the script again" \
 	&& exit 1
+
+# Check software requirements
+# TODO: check if git is installed
 
 
 
@@ -104,7 +107,7 @@ systemctl enable reflector.timer
 #		Essential packages		#
 #################################
 # Install essential packages
-pacman -S base-devel linux-headers
+pacman -S base base-devel linux linux-headers linux-firmware
 
 
 
@@ -119,203 +122,19 @@ xdg-user-dirs-update
 
 
 
-#############################
-#		Power control		#
-#############################
-# Install power control packages
-acpi acpi_call acpid git
-
-# Enable power control service
-systemctl enable acpid
-
-# Check if the system is a laptop
-if [ "$IS_LAPTOP" = true ]; then
-	# Install laptop power control packages
-	pacman -S tlp
-
-	# Enable laptop power control service
-	systemctl enable tlp
-fi
-
-
-
-#########################
-#		File system		#
-#########################
-# Install virtual file system packages
-pacman -S gvfs gvfs-mtp gvfs-smb
-
-# Install btrfs packages
-btrfs-progs
-
-# Install fat packages
-mtools dosfstools
-
-# Install ntfs packags
-pacman -S ntfs-3g
-
-
-
-#########################
-#		Bootloader		#
-#########################
-# Install bootloader packages
-pacman -S grub grub-btrfs efibootmgr
-
-# Build initramfs
-mkinitcpio -P
-
-# Setup grub
-grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
-grub-mkconfig -o /boot/grub/grub.cfg
+#################
+#		Git		#
+#################
+# Install git packages
+pacman -S git git-filter-repo
 
 
 
 #####################
-#		Shell		#
+#		Editors		#
 #####################
-# Install bash packages (if we ever need to use it)
-pacman -S bash-completion
-
-# Install zsh packages
-pacman -S zsh
-
-# Change default shell
-chsh -s /bin/zsh root
-chsh -s /bin/zsh $USERNAME
-
-
-
-#################################
-#		Network file system		#
-#################################
-# Install nfs packages
-pacman -S nfs-utils
-
-# Install smb packages
-pacman -S samba smbclient
-
-
-
-#########################
-#		Networking		#
-#########################
-# Install networking packages
-pacman -S networkmanager network-manager-applet dialog wireless_tools wpa_supplicant inetutils dnsutils avahi nss-mdns inetutils bridge-utils dnsmasq openbsd-netcat
-
-# Start NetworkManager on boot
-systemctl enable NetworkManager
-
-# Start mDNS service on boot
-systemctl enable avahi-daemon
-
-
-
-#########################
-#		Firewall		#
-#########################
-# Remove conflicting firewall packages
-pacman -R iptables
-
-# Install firewall packages
-pacman -S iptables-nft firewalld
-
-# Start firewall service on boot
-systemctl enable firewalld
-
-
-
-#####################
-#		Sound		#
-#####################
-# Install sound packages
-pacman -S alsa-utils wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack sof-firmware
-
-
-
-#########################
-#		Bluetooth		#
-#########################
-# Install Bluetooth packages
-pacman -S bluez bluez-utils
-
-# Start Bluetooth service on boot
-systemctl enable bluetooth
-
-
-
-#####################
-#		Printer		#
-#####################
-# Install printer packages
-pacman -S cups cups-pdf
-
-# Start printing service on boot
-systemctl enable cups.service
-
-
-
-#################################
-#		Remote management		#
-#################################
-# Install remote management packages
-pacman -S openssh virt-viewer
-
-# Enable ssh deamon
-systemctl enable sshd
-
-
-
-#####################
-#		Graphic		#
-#####################
-# Install window manager packages
-pacman -S xorg xorg-server
-
-# Install session initialization packages
-pacman -S xorg-xinit
-
-# Install intel packages
-pacman -S intel-ucode xf86-video-intel
-
-# Install nvidia packages
-pacman -S nvidia nvidia-utils nvidia-settings
-
-# Install window manager
-pacman -S awesome
-
-
-
-#####################
-#		Browser		#
-#####################
-# Install browser packages
-pacman -S firefox
-
-
-
-#################################################
-#		Authentication and authorization		#
-#################################################
-# Install authentication and authorization packages
-pacman -S polkit
-
-
-
-#############################
-#		Virtualization		#
-#############################
-# Install qemu/kvm vitalization packages
-pacman -S qemu-full edk2-ovmf vde2 dmidecode
-
-# Install virtualization managers
-pacman -S virtsh virt-manager
-
-# Enable virtualization management service
-systemctl enable libvirtd
-
-# Give user access to virtualization management
-usermod -aG libvirt "$USERNAME"
+# Install editor packages
+pacman -S vim neovim
 
 
 
@@ -348,6 +167,361 @@ git clone https://aur.archlinux.org/paru.git
 cd paru
 makepkg -si
 rm -rf paru
+
+
+
+#####################
+#		Shell		#
+#####################
+# Install bash packages (if we ever need to use it)
+pacman -S bash bash-completion
+
+# Install zsh packages
+pacman -S zsh zsh-theme-powerlevel10k
+
+# Change default shell
+chsh -s /bin/zsh root
+chsh -s /bin/zsh $USERNAME
+
+
+
+#########################
+#		Shell tools		#
+#########################
+# Install locate packages
+pacman -S plocate
+
+
+
+#########################
+#		File system		#
+#########################
+# Install virtual file system packages
+pacman -S gvfs gvfs-mtp gvfs-smb
+
+# Install btrfs packages
+pacman -S btrfs-progs
+
+# Install fat packages
+pacman -S mtools dosfstools
+
+# Install ntfs packags
+pacman -S ntfs-3g
+
+
+
+#########################
+#		Bootloader		#
+#########################
+# Install bootloader packages
+pacman -S grub grub-btrfs efibootmgr
+
+# Build initramfs
+mkinitcpio -P
+
+# Setup grub
+grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=GRUB
+grub-mkconfig -o /boot/grub/grub.cfg
+
+
+
+#################################
+#		Network file system		#
+#################################
+# Install nfs packages
+pacman -S nfs-utils
+
+# Install smb packages
+pacman -S samba smbclient
+
+
+
+#########################
+#		Networking		#
+#########################
+# Install networking packages
+pacman -S networkmanager wireless_tools wpa_supplicant inetutils dnsutils avahi nss-mdns bridge-utils dnsmasq bind openbsd-netcat
+
+# Start NetworkManager on boot
+systemctl enable NetworkManager
+
+# Start mDNS service on boot
+systemctl enable avahi-daemon
+
+
+
+#########################
+#		Firewall		#
+#########################
+# Remove conflicting firewall packages
+pacman -R iptables
+
+# Install firewall packages
+pacman -S iptables-nft firewalld
+
+# Start firewall service on boot
+systemctl enable firewalld
+
+
+
+#################################
+#		Remote management		#
+#################################
+# Install remote management packages
+pacman -S openssh virt-viewer
+
+# Enable ssh deamon
+systemctl enable sshd
+
+
+
+#####################
+#		Sound		#
+#####################
+# Install sound packages
+pacman -S alsa-utils wireplumber pipewire pipewire-alsa pipewire-pulse pipewire-jack sof-firmware
+
+# Install sound control packages
+pacman -S pavucontrol qpwgraph
+
+
+
+#########################
+#		Bluetooth		#
+#########################
+# Install Bluetooth packages
+pacman -S bluez bluez-utils
+
+# Start Bluetooth service on boot
+systemctl enable bluetooth
+
+
+
+#####################
+#		Printer		#
+#####################
+# Install printer packages
+pacman -S cups cups-pdf
+
+# Start printing service on boot
+systemctl enable cups.service
+
+
+
+#################################################
+#		Authentication and authorization		#
+#################################################
+# Install authentication and authorization packages
+pacman -S polkit polkit-gnome
+
+
+
+#####################
+#		Graphic		#
+#####################
+# Install display server packages
+pacman -S xorg xorg-server
+
+# Install session initialization packages
+pacman -S xorg-xinit
+
+# Install intel packages
+pacman -S intel-ucode xf86-video-intel
+
+# Install nvidia packages
+pacman -S nvidia nvidia-utils nvidia-settings
+
+# Create nvidia xorg configuration
+nvidia-xconfig
+
+
+
+#############################
+#		Window manager		#
+#############################
+# Install window manager packages
+pacman -S awesome
+
+
+
+#########################
+#		Compositor		#
+#########################
+# Install compositor packages
+pacman -S picom
+
+
+
+#####################
+#		Font		#
+#####################
+# Install normal font packages
+pacman -S noto-fonts noto-fonts-emoji noto-fonts-extra ttf-dejavu ttf-liberation ttf-droid ttf-opensans
+
+# Install nerd font packages
+paru -S nerd-fonts-jetbrains-mono
+
+
+
+#################################
+#		Terminal emulator		#
+#################################
+# Install terminal emulator packages
+pacman -S alacritty
+
+
+
+#############################
+#		Power control		#
+#############################
+# Install power control packages
+pacman -S acpi acpi_call acpid
+
+# Enable power control service
+systemctl enable acpid
+
+# Check if the system is a laptop
+if [ "$IS_LAPTOP" = true ]; then
+	# Install laptop power control packages
+	pacman -S tlp
+
+	# Enable laptop power control service
+	systemctl enable tlp
+fi
+
+# Install graphical power control package
+# TODO
+
+
+
+#################################
+#		Screen management		#
+#################################
+# Install screen management packages
+pacman -S arandr
+
+
+
+#############################
+#		Session locker		#
+#############################
+# Install session locker packages
+# TODO
+
+
+#####################
+#		Menu		#
+#####################
+# Install menu packages
+pacman -S dialog rofi
+
+
+
+#####################
+#		Browser		#
+#####################
+# Install browser packages
+pacman -S firefox
+
+
+
+#########################
+#		Icon theme		#
+#########################
+# Install icon theme packages
+pacman -S papirus-icon-theme
+
+
+
+#########################
+#		Tray icon		#
+#########################
+# Install network tray icon packages
+pacman -S network-manager-applet
+
+# Install sound try icon packages
+paru -S pnmixer
+
+
+
+#############################
+#		File manager		#
+#############################
+# Install grahical file manger packages # TODO: maybe switch?
+pacman -S thunar thunar-archive-plugin thunar-volman
+
+
+
+#####################
+#		Archive		#
+#####################
+# Install graphical archive packages
+pacman -S xarchiver
+
+
+
+#############################
+#		Image viewer		#
+#############################
+# Install image viewer packages
+pacman -S feh
+
+
+
+#########################
+#		Clipboard		#
+#########################
+# Install clipboard packages
+pacman -S xclip
+
+
+
+#########################
+#		Screenshot		#
+#########################
+# Install screenshot packages
+pacman -S flameshot
+
+
+
+#########################
+#		Markdown		#
+#########################
+# Install markdown packages
+# TODO
+
+
+
+#####################
+#		Latex		#
+#####################
+# Install latex packages
+# TODO
+
+
+
+#############################
+#		Communication		#
+#############################
+# Install communication packages
+pacman -S dicord
+
+
+
+#############################
+#		Virtualization		#
+#############################
+# Install qemu/kvm vitalization packages
+pacman -S qemu-full edk2-ovmf vde2 dmidecode
+
+# Install virtualization managers
+pacman -S virtsh virt-manager
+
+# Enable virtualization management service
+systemctl enable libvirtd
+
+# Give user access to virtualization management
+usermod -aG libvirt "$USERNAME"
 
 
 
