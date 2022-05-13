@@ -10,13 +10,14 @@ set -x
 # Set variables
 TIMEZONE='Europe/Vienna'
 MIRROR_COUNTRIES='Austria,Germany'
-KEYMAP='de-latin1-nodeadkeys'
+KEYBOARD_LAYOUT='at'
+KEYBOARD_VARIANT='nodeadkeys'
+KEYBOARD_MODEL='pc105'
 USERNAME=timon
 ROOT_PASSWORD=''
 IS_LAPTOP='true'
 GIT_USERNAME='Timon-Schwarz'
 GIT_EMAIL='timon.anmeldung@gmail.com'
-
 
 
 #####################################
@@ -49,7 +50,7 @@ locale-gen
 #		Keyboard		#
 #########################
 # Set keyboard layout
-localectl set-keymap "$KEYMAP"
+localectl set-x11-keymap "$KEYBOARD_LAYOUT" "$KEYBOARD_MODEL" "$KEYBOARD_VARIANT"
 
 
 
@@ -339,13 +340,16 @@ pacman -S xorg xorg-server
 pacman -S xorg-xinit
 
 # Install intel packages
-pacman -S intel-ucode xf86-video-intel
+pacman -S intel-ucode
 
 # Install nvidia packages
 pacman -S nvidia nvidia-utils nvidia-settings
 
-# Create nvidia xorg configuration
-nvidia-xconfig
+# Check if the system is a laptop
+if [ "$IS_LAPTOP" = true ]; then
+	# Install hybrid graphics packages
+	pacman -S nvidia-prime
+fi
 
 
 
