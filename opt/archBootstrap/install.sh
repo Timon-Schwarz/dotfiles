@@ -18,6 +18,8 @@ ROOT_PASSWORD=''
 IS_LAPTOP='true'
 GIT_USERNAME='Timon-Schwarz'
 GIT_EMAIL='timon.anmeldung@gmail.com'
+GIT_REMOTE_DOTFILE_REPOSITORY='git@github.com:Timon-Schwarz/dotfiles.git'
+
 
 
 #####################################
@@ -84,6 +86,9 @@ git config --global user.name "$GIT_USERNAME"
 
 # Update git username
 git config --global user.email "$GIT_EMAIL"
+
+# Update remote repository
+sed -i "s/\(url\s=\s\)\(.*\)/\1$GIT_REMOTE_DOTFILE_REPOSITORY/" "/home/$USERNAME/.bare-repositories/dotfiles/git/config"
 
 
 
