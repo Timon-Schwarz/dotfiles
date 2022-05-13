@@ -577,6 +577,7 @@ sudo rmdir /.snapshots
 
 # Setup snapper from template configuration
 sudo snapper -c root create-config -t /usr/share/snapper/custom /
+sudo snapper -c home create-config -t /usr/share/snapper/custom /home
 
 # Snapper creates its own .snapshots subvolume
 # We can delete it because we are using @.snpshots instead
