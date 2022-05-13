@@ -52,7 +52,7 @@ bindkey '^v' edit-command-line
 autoload -Uz compinit
 zmodload zsh/complist
 zstyle ':completion:*' menu select
-zstyle :compinstall filename '/home/timon/.zshrc'
+zstyle :compinstall filename "$HOME/.zshrc"
 zstyle ':completion::complete:*' gain-privileges 1
 compinit
 _comp_options+=(globdots)
@@ -66,7 +66,7 @@ _comp_options+=(globdots)
 alias sudo='sudo '
 
 # Dotfiles bare git repository alias
-alias dotfiles='sudo git --git-dir=$HOME/.bare-repositories/dotfiles/git --work-tree=/'
+alias dotfiles="sudo git --git-dir=$HOME/.bare-repositories/dotfiles/git --work-tree=/"
 
 
 

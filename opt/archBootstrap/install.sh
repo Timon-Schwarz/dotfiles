@@ -358,6 +358,10 @@ btrfs subvolume delete /.snapshots
 # Ensure that everyone can read the snapshots
 chmod a+rx /.snapshots
 
+# Give the user snapshot permissions
+groupadd snapshot
+usermod -aG snapshot "$USERNAME"
+
 # Automatically update snapshot entries in grub
 systemctl enable grub-btrfs.path
 
