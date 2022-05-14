@@ -11,9 +11,10 @@ set -x
 CURRENT_USERNAME='timon'	# Do not change this
 TIMEZONE='Europe/Vienna'
 MIRROR_COUNTRIES='Austria,Germany'
-KEYBOARD_LAYOUT='at'
-KEYBOARD_VARIANT='nodeadkeys'
-KEYBOARD_MODEL='pc105'
+VCONSOLE_KEYBOARD_LAYOUT='de-latin1-nodeadkeys'
+X11_KEYBOARD_LAYOUT='at'
+X11_KEYBOARD_VARIANT='nodeadkeys'
+X11_KEYBOARD_MODEL='pc105'
 USERNAME=timon
 ROOT_PASSWORD=''
 IS_LAPTOP='true'
@@ -23,7 +24,7 @@ GIT_REMOTE_DOTFILE_REPOSITORY='git@github.com:Timon-Schwarz/dotfiles.git'
 # This should be the memory of your Windows VM
 # divided by your hugepagesize. It is then recommended to add some more pages for headroom
 # Use "grep Hugepagesize /proc/meminfo" to determine hugepagesize
-NR_HUGEPAGES='4200'		
+NR_HUGEPAGES='4200'
 
 
 
@@ -69,7 +70,8 @@ locale-gen
 #		Keyboard		#
 #########################
 # Set keyboard layout
-localectl set-x11-keymap "$KEYBOARD_LAYOUT" "$KEYBOARD_MODEL" "$KEYBOARD_VARIANT"
+localectl set-x11-keymap --no-convert "$X11_KEYBOARD_LAYOUT" "$X11_KEYBOARD_MODEL" "$X11_KEYBOARD_VARIANT"
+localectl set-keymap --no-convert "$VCONSOLE_KEYBOARD_LAYOUT"
 
 
 
