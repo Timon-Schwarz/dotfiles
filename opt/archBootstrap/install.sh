@@ -20,6 +20,10 @@ IS_LAPTOP='true'
 GIT_USERNAME='Timon-Schwarz'
 GIT_EMAIL='timon.anmeldung@gmail.com'
 GIT_REMOTE_DOTFILE_REPOSITORY='git@github.com:Timon-Schwarz/dotfiles.git'
+# This should be the memory of your Windows VM
+# divided by your hugepagesize. It is then recommended to add some more pages for headroom
+# Use "grep Hugepagesize /proc/meminfo" to determine hugepagesize
+NR_HUGEPAGES='4200'		
 
 
 
@@ -588,6 +592,15 @@ systemctl enable libvirtd
 
 # Give user access to virtualization management
 usermod -aG libvirt "$USERNAME"
+usermod -aG kvm "$USERNAME"
+
+
+
+#########################
+#		Windows VM		#
+#########################
+# Update the hugepageszize
+sed -i "s/\(vm.nr_hugepages\s=\s\)\(.*\)/\1$NR_HUGEPAGES/" "/etc/sysctl.d/40-hugepage.conf"
 
 
 
