@@ -358,7 +358,7 @@ pacman -S xorg xorg-server
 pacman -S xorg-xinit
 
 # Install intel packages
-pacman -S intel-ucode
+pacman -S mesa intel-ucode vulkan-intel
 
 # Install nvidia packages
 pacman -S nvidia nvidia-utils nvidia-settings
@@ -558,6 +558,14 @@ pacman -S dicord
 
 
 
+#############################
+#		Partitioning		#
+#############################
+# Install partitioning packages
+pacman -S gparted
+
+
+
 #########################
 #		Database		#
 #########################
@@ -573,7 +581,7 @@ pacman -S mariadb
 pacman -S qemu-full edk2-ovmf vde2 dmidecode
 
 # Install virtualization managers
-pacman -S virtsh virt-manager
+pacman -S virt-manager
 
 # Enable virtualization management service
 systemctl enable libvirtd
