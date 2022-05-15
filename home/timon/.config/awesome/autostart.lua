@@ -1,14 +1,32 @@
+--------------------------
+--		Requires		--
+--------------------------
 local awful = require("awful")
 
-local clock = os.clock
-function sleep(n)  -- seconds
-  local t0 = clock()
-  while clock() - t0 <= n do end
-end
 
+
+----------------------
+--		Daemons		--
+----------------------
 awful.spawn.single_instance("picom --daemon")
 awful.spawn.single_instance("thunar --daemon")
 
-awful.spawn.single_instance("flameshot")
-awful.spawn.single_instance("nm-applet")
-awful.spawn.single_instance("volumeicon")
+
+
+----------------------
+--		Applets		--
+----------------------
+-- Some tray icons don't load properly when started to early so we have to add a small delay
+-- By adding a time difference in the delay we can control the default order
+-- TODO: find a better way to order tray icons
+awful.spawn.easy_async_with_shell("sleep 4", function()
+	awful.spawn.single_instance("flameshot")
+end)
+
+awful.spawn.easy_async_with_shell("sleep 4.5", function()
+	awful.spawn.single_instance("nm-applet")
+end)
+
+awful.spawn.easy_async_with_shell("sleep 5", function()
+	awful.spawn.single_instance("volumeicon")
+end)
