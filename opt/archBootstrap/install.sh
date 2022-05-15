@@ -507,6 +507,8 @@ pacman -S firefox
 # Install icon theme packages
 pacman -S papirus-icon-theme
 
+# Install hard coded tray icons fix packages
+paru -S hardcode-tray
 
 
 #########################

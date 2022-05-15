@@ -83,7 +83,7 @@ theme.taglist_squares_unsel = theme_assets.taglist_squares_unsel(
 --		Icons		--
 ----------------------
 -- Application icon theme
-theme.icon_theme = nil
+theme.icon_theme = "/usr/share/icons/Papirus-Dark"
 
 -- Layout icons
 theme.layout_fairh		= themes_path.."default/layouts/fairhw.png"
