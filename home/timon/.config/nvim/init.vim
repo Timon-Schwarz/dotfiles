@@ -177,7 +177,7 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 """""""""""""
 " key binding for placeholders
 " no delete command is being used so that the copy register is not filled with \"<++>\"
-nnoremap <leader><leader> /<CR>llla<Backspace><Backspace><Backspace><Backspace>
+nnoremap <leader><leader> /<++><CR>ca<
 
 " key bindings for NERDTree
 nnoremap <C-e> :NERDTreeToggle<CR>
