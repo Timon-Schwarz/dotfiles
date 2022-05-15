@@ -62,7 +62,7 @@ theme.border_marked = "#50fa7b" -- dracula green
 --		Background		--
 --------------------------
 -- Set wallpaper
-theme.wallpaper = "/usr/share/wallpaper/kali.svg"
+theme.wallpaper = "/usr/share/wallpaper/dracula_arch.png"
 
 
 ----------------------

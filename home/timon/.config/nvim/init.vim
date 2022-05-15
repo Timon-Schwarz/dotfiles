@@ -1,3 +1,57 @@
+"""""""""""""""""""""""""""""""
+" plugin manager installation "
+"""""""""""""""""""""""""""""""
+if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
+	echo "Downloading junegunn/vim-plug to manage plugins..."
+	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
+	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
+	autocmd VimEnter * PlugInstall
+endif
+
+
+
+""""""""""""""""""""""""
+" plugins installation "
+""""""""""""""""""""""""
+call plug#begin()
+	" looks plugins
+	Plug 'vim-airline/vim-airline'
+	Plug 'vim-airline/vim-airline-themes'
+	Plug 'dracula/vim', { 'as': 'dracula' }
+	Plug 'ryanoasis/vim-devicons'
+	" feature plugins
+	Plug 'preservim/nerdtree'
+	Plug 'tpope/vim-surround'
+	" latex plugins
+	Plug 'lervag/vimtex'
+call plug#end()
+
+
+
+"""""""""""""""""""""""""
+" plugins configuration "
+"""""""""""""""""""""""""
+" vim-airline plugin configuration
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail'
+
+" vim-airline-themes plugin configuration
+let g:airline_theme='base16_dracula'
+
+" vimtex plugin configuration
+let g:vimtex_view_method = $READER
+
+
+
+"""""""""""""""""""
+" leader mappings "
+"""""""""""""""""""
+let mapleader=" "
+let maplocalleader=","
+
+
+
 """"""""""""""""""""
 " general settings "
 """"""""""""""""""""
@@ -26,6 +80,9 @@ set mouse=a
 
 " enable 24 bit RBG colors
 set termguicolors
+
+" set colorscheme
+colorscheme dracula
 
 " enable absolute line numeration for the line the cursor is on
 " enable relative line numeration for all other lines relative to the current line
@@ -112,57 +169,6 @@ cnoremap w!! execute 'silent! write !sudo tee % >/dev/null' <bar> edit!
 
 
 
-"""""""""""""""""""""""""""""""
-" plugin manager installation "
-"""""""""""""""""""""""""""""""
-if ! filereadable(system('echo -n "${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim"'))
-	echo "Downloading junegunn/vim-plug to manage plugins..."
-	silent !mkdir -p ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/
-	silent !curl "https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim" > ${XDG_CONFIG_HOME:-$HOME/.config}/nvim/autoload/plug.vim
-	autocmd VimEnter * PlugInstall
-endif
-
-
-
-""""""""""""""""""""""""
-" plugins installation "
-""""""""""""""""""""""""
-call plug#begin()
-	" looks plugins
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'Mofiqul/dracula.nvim'
-	Plug 'ryanoasis/vim-devicons'
-	" feature plugins
-	Plug 'preservim/nerdtree'
-	Plug 'tpope/vim-surround'
-	" latex plugins
-	Plug 'lervag/vimtex'
-call plug#end()
-
-
-
-"""""""""""""""""""""""""
-" plugins configuration "
-"""""""""""""""""""""""""
-" vim-airline plugin configuration
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#formatter = 'unique_tail'
-
-" vim-airline-themes plugin configuration
-let g:airline_theme='base16_dracula'
-
-" vimtex plugin configuration
-let g:vimtex_view_method = $READER
-
-
-
-"""""""""""""""""""
-" leader mappings "
-"""""""""""""""""""
-let mapleader=" "
-let maplocalleader=","
 
 
 

@@ -202,7 +202,7 @@ rm -rf paru
 pacman -S bash bash-completion
 
 # Install zsh packages
-pacman -S zsh zsh-theme-powerlevel10k
+pacman -S zsh zsh-theme-powerlevel10k zsh-syntax-highlighting
 
 # Change default shell
 chsh -s /bin/zsh root
@@ -402,11 +402,25 @@ pacman -S picom
 
 
 
+#########################
+#		Toolkits		#
+#########################
+# Install GTK toolkit packages
+pacman -S gtk2 gtk3 gtk4
+
+# Install QT toolkit packages
+pacman -S qt5-base qt6-base qt5-svg qt6-svg
+
+# Install QT GTK style packages
+paru -S qt5-styleplugins qt6gtk2
+
+
+
 #####################
 #		Font		#
 #####################
 # Install normal font packages
-pacman -S noto-fonts noto-fonts-emoji noto-fonts-extra ttf-dejavu ttf-liberation ttf-droid ttf-opensans
+pacman -S noto-fonts noto-fonts-emoji noto-fonts-extra ttf-dejavu ttf-liberation ttf-droid ttf-opensans ttf-roboto ttf-ubuntu-font-family cantarell-conts
 
 # Install nerd font packages
 paru -S nerd-fonts-jetbrains-mono
@@ -457,6 +471,15 @@ pacman -S arandr
 #############################
 # Install session locker packages
 # TODO
+
+
+
+#####################
+#		Torrent		#
+#####################
+# Install torrent packages
+pacman -S qbittorrent
+
 
 
 #####################
@@ -510,6 +533,14 @@ pacman -S thunar thunar-archive-plugin thunar-volman
 #####################
 # Install graphical archive packages
 pacman -S xarchiver
+
+
+
+#####################
+#		Reader		#
+#####################
+# Install reader packages
+pacman -S zathura zathura-pdf-poppler
 
 
 

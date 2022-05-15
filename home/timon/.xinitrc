@@ -33,7 +33,7 @@ fi
 #############################################
 #		Start background applications		#
 #############################################
-picom --daemon --experimental-backends &
+picom --daemon &
 nm-applet &
 pnmixer &
 thunar --daemon &
