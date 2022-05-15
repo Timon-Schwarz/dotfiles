@@ -518,7 +518,7 @@ paru -S hardcode-tray
 pacman -S network-manager-applet
 
 # Install sound try icon packages
-paru -S pnmixer
+pacman -S volumeicon
 
 
 

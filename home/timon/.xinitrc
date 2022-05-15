@@ -35,7 +35,7 @@ fi
 #############################################
 picom --daemon &
 nm-applet &
-pnmixer &
+volumeicon &
 thunar --daemon &
 flameshot &
 
