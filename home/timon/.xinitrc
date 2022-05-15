@@ -30,17 +30,6 @@ fi
 
 
 
-#############################################
-#		Start background applications		#
-#############################################
-picom --daemon &
-nm-applet &
-volumeicon &
-thunar --daemon &
-flameshot &
-
-
-
 #############################
 #		Setup screens		#
 #############################

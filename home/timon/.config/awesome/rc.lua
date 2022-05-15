@@ -547,3 +547,10 @@ client.connect_signal("unfocus",
 
 -- Screen geometry change
 screen.connect_signal("property::geometry", set_wallpaper)
+
+
+
+----------------------------------
+--		Load other files		--
+----------------------------------
+require("autostart")
