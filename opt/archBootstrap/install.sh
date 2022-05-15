@@ -613,6 +613,14 @@ pacman -S mariadb
 
 
 
+#####################
+#		LaTeX		#
+#####################
+# Install LaTeX packages
+pacman -S texive-most
+
+
+
 #############################
 #		Virtualization		#
 #############################
