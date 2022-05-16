@@ -3,8 +3,7 @@
 GRUB_DEFAULT=0
 GRUB_TIMEOUT=5
 GRUB_DISTRIBUTOR="Arch"
-# GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet luks.name=496f34db-71c2-4bac-a486-c947de974e79=cryptroot root=/dev/mapper/cryptroot"
-GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet root=/dev/mapper/cryptroot"
+GRUB_CMDLINE_LINUX_DEFAULT="loglevel=3 quiet root=LABEL=root"
 GRUB_CMDLINE_LINUX=""
 
 # Preload both GPT and MBR modules so that they are not missed
@@ -34,6 +33,9 @@ GRUB_GFXPAYLOAD_LINUX=keep
 # Uncomment if you want GRUB to pass to the Linux kernel the old parameter
 # format "root=/dev/xxx" instead of "root=/dev/disk/by-uuid/xxx"
 #GRUB_DISABLE_LINUX_UUID=true
+
+# Uncomment to allow the use of labels
+GRUB_ENABLE_LINUX_LABEL=true
 
 # Uncomment to disable generation of recovery mode menu entries
 GRUB_DISABLE_RECOVERY=true

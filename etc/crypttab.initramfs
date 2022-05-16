@@ -5,4 +5,5 @@
 #       beforehand by the initramfs (/etc/mkinitcpio.conf).
 
 # <name>       <device>                                     <password>              <options>
-cryptroot		UUID=496f34db-71c2-4bac-a486-c947de974e79	none					discard
+cryptroot1		UUID=496f34db-71c2-4bac-a486-c947de974e79	none					discard
+cryptroot2		UUID=7e4b1e98-9c58-4591-9e7a-aa31ab6b82b1	none					discard

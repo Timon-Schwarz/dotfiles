@@ -1,17 +1,10 @@
-# /dev/mapper/cryptroot
-UUID=aa1b5184-0722-423d-ac59-1a931a35d279	/         	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=256,subvol=/@	0 0
+LABEL=root				/         	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=256,subvol=/@	0 0
 
 # /dev/nvme0n1p1
 UUID=E1FB-00C3      	/boot     	vfat      	rw,relatime,fmask=0022,dmask=0022,codepage=437,iocharset=ascii,shortname=mixed,utf8,errors=remount-ro	0 2
 
-# /dev/mapper/cryptroot
-UUID=aa1b5184-0722-423d-ac59-1a931a35d279	/home     	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=257,subvol=/@home	0 0
+LABEL=root				/home     	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=257,subvol=/@home	0 0
 
-# /dev/mapper/cryptroot
-UUID=aa1b5184-0722-423d-ac59-1a931a35d279	/var/log  	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=258,subvol=/@log	0 0
+LABEL=root				/var/log  	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=258,subvol=/@log	0 0
 
-# /dev/mapper/cryptroot
-UUID=aa1b5184-0722-423d-ac59-1a931a35d279	/.snapshots	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=263,subvol=/@snapshots	0 0
-
-# /dev/sda1
-# UUID=4E47E8731F7A116C				/home/timon/Share	ntfs-3g		defaults	0	0
+LABEL=root				/.snapshots	btrfs     	rw,noatime,compress=lzo,ssd,discard=async,space_cache=v2,subvolid=263,subvol=/@snapshots	0 0
