@@ -406,7 +406,7 @@ pacman -S picom
 #		Toolkits		#
 #########################
 # Install GTK toolkit packages
-pacman -S gtk2 gtk3 gtk4
+pacman -S gtk2 gtk3 gtk4 gtk-engine-murrine
 
 # Install QT toolkit packages
 pacman -S qt5-base qt6-base qt5-svg qt6-svg
