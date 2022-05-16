@@ -64,6 +64,7 @@ editor = os.getenv("EDITOR")
 browser = os.getenv("BROWSER")
 reader = os.getenv("READER")
 filemanager = os.getenv("FILEMANAGER")
+windows_vm_name = "win10"
 
 
 
@@ -402,7 +403,14 @@ globalkeys = gears.table.join(globalkeys,
 		function()
 			awful.spawn.with_shell("flameshot gui")
 		end,
-		{description = "launch screenshot utility", group = "launch"})
+		{description = "launch screenshot utility", group = "launch"}),
+
+	-- Launch Windows virtual machine
+    awful.key({modkey}, "w",
+		function()
+			awful.spawn.with_shell("openVM " .. windows_vm_name)
+		end,
+		{description = "launch windows virtual machine", group = "launch"})
 )
 
 
