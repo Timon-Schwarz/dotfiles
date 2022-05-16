@@ -33,7 +33,7 @@ fi
 #############################
 #		Setup screens		#
 #############################
-/usr/local/bin/setupScreen.sh &
+setupScreen &
 
 
 

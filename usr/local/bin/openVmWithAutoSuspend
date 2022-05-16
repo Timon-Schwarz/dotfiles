@@ -1,0 +1,36 @@
+#!/bin/bash
+
+#####################
+#		Main		#
+#####################
+vm_info=$(virsh list --all | grep " $1 ")
+if [ -z "$vm_info" ]; then
+	echo "VM $1 does not exist. Exiting..."
+	exit 1
+else
+	vm_state=$(virsh dominfo "$1" | grep -w "State:" | awk '{ print $2}')
+	if [ "$vm_state" == "running" ]; then
+		virt-viewer --attach "$1"
+		echo "Window closed. Pausing VM..."
+		virsh suspend "$1"
+		exit 0
+	fi
+	if [ "$vm_state" == "shut" ]; then
+		echo "VM $1 is currently shut off. Starting it now..."
+		virsh start "$1"
+		virt-viewer --attach "$1"
+		echo "Session closed. Pausing VM..."
+		virsh suspend "$1"
+		exit 0
+	fi
+	if [ "$vm_state" == "paused" ]; then
+		echo "VM $1 is currently paused off. Resuming it now..."
+		virsh resume "$1"
+		virt-viewer --attach "$1"
+		echo "Session closed. Pausing VM..."
+		virsh suspend "$1"
+		exit 0
+	fi
+	echo "Something went wrong"
+	exit 1
+fi
