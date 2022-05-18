@@ -174,6 +174,16 @@ systemctl enable paccache.timer
 
 
 
+#########################
+#		AUR helper		#
+#########################
+git clone https://aur.archlinux.org/paru.git
+cd paru
+makepkg -si
+rm -rf paru
+
+
+
 #####################################
 #		Package distribution		#
 #####################################
@@ -183,15 +193,11 @@ pacman -S flatpak
 # Add flathub repository to flatpak
 flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
 
+# Install snap packages
+paru -S snapd
 
-
-#########################
-#		AUR helper		#
-#########################
-git clone https://aur.archlinux.org/paru.git
-cd paru
-makepkg -si
-rm -rf paru
+# Start snap daemon when needed
+systemctl enable --now snapd.socket
 
 
 
@@ -565,11 +571,17 @@ systemctl --user enable clipmenud
 
 
 
-#########################
-#		Screenshot		#
-#########################
+#############################
+#		Screen capture		#
+#############################
 # Install screenshot packages
 pacman -S flameshot
+
+# Install screen recorder packages
+pacman -S obs-studio
+
+# Install video encoder packages
+pacman -S handbrake
 
 
 
@@ -594,6 +606,7 @@ pacman -S flameshot
 #############################
 # Install communication packages
 pacman -S dicord
+paru -S teams
 
 
 
