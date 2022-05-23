@@ -634,9 +634,9 @@ pacman -S texive-most
 
 
 
-#############################
-#		Virtualization		#
-#############################
+#################################
+#		KVM virtualization		#
+#################################
 # Install qemu/kvm vitalization packages
 pacman -S qemu-full edk2-ovmf vde2 dmidecode
 
@@ -649,6 +649,18 @@ systemctl enable libvirtd
 # Give user access to virtualization management
 usermod -aG libvirt "$USERNAME"
 usermod -aG kvm "$USERNAME"
+
+
+
+#####################################
+#		VMware virtualization		#
+#####################################
+# Install VMware Workstation packages
+paru -S vmware-workstation
+
+# Enable VMware services
+systemctl enable vmware-networks
+systemctl enable vmware-usbarbitrator
 
 
 

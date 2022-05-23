@@ -6,8 +6,8 @@
 127.0.1.1   	workstation-schwarz workstation-schwarz.localdomain
 
 # vSphere Cluster
-10.70.99.243	vcenter-2.da-cluster.htlw3r.at
-# 10.70.100.1 	vcenter-2.da-cluster.htlw3r.at
+#10.70.99.243	vcenter-2.da-cluster.htlw3r.at
+10.70.100.1 	vcenter-2.da-cluster.htlw3r.at
 
 
 
