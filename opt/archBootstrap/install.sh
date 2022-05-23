@@ -572,6 +572,28 @@ systemctl --user enable clipmenud
 
 
 #############################
+#		Notifications		#
+#############################
+# AwesomeWM comes with naughty as notification server
+# No need to use something else
+
+
+
+#########################
+#		Backlight		#
+#########################
+# Install backlight control packages
+paru -S brillo
+
+# Set minimum backlight
+brillo -c -S 2
+
+# Add user to video group to allow backlight control
+usermod -aG video "$USERNAME"
+
+
+
+#############################
 #		Screen capture		#
 #############################
 # Install screenshot packages

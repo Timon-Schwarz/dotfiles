@@ -126,13 +126,26 @@ awful.screen.connect_for_each_screen(function(s)
         filter  = awful.widget.taglist.filter.all,
     }
 
-    -- Create layout selector
-    s.mylayoutbox = awful.widget.layoutbox(s)
-    s.mylayoutbox:buttons(gears.table.join(
+    -- Create layout selector widget
+    s.layoutwidget = awful.widget.layoutbox(s)
+    s.layoutwidget:buttons(gears.table.join(
                            awful.button({}, 1, function () awful.layout.inc( 1) end),
                            awful.button({}, 3, function () awful.layout.inc(-1) end),
                            awful.button({}, 4, function () awful.layout.inc( 1) end),
                            awful.button({}, 5, function () awful.layout.inc(-1) end)))
+
+	-- Create battery widget
+	s.batterywidget = wibox.widget.textbox()
+	s.batterywidget:set_text(" | Battery ")
+	s.batterywidgettimer = timer({ timeout = 5 })
+	s.batterywidgettimer:connect_signal("timeout",
+	  function()
+	    fh = assert(io.popen("acpi | cut -d, -f 2,3 -", "r"))
+	    s.batterywidget:set_text(" |" .. fh:read("*l") .. " ")
+	    fh:close()
+	  end
+	)
+	s.batterywidgettimer:start()
 
     -- Create the wibox
     s.mywibox = awful.wibar({ position = "top", screen = s })
@@ -150,7 +163,8 @@ awful.screen.connect_for_each_screen(function(s)
 	        { -- Right widgets
 	            layout = wibox.layout.fixed.horizontal,
 	            wibox.widget.systray(),
-	            s.mylayoutbox,
+				s.batterywidget,
+	            s.layoutwidget,
 	        },
 	    },
 		{ -- Center widgets
@@ -398,6 +412,53 @@ globalkeys = gears.table.join(globalkeys,
 )
 
 
+
+------------------------------------------
+--		Utility global keybindings		--
+------------------------------------------
+globalkeys = gears.table.join(globalkeys,
+    -- Increase screen backlight brightness
+    awful.key({}, "XF86MonBrightnessUp",
+		function()
+			awful.spawn.easy_async("brillo -A 5 -u 100000 -q", function()
+				awful.spawn.easy_async("brillo -G", function(brightness)
+					if brightness_notitifcation then
+						naughty.replace_text(brightness_notitifcation, "Brightness", brightness)
+					else
+						brightness_notitifcation = naughty.notify({
+							title = "Brightness",
+							text = brightness,
+							destroy = function ()
+								brightness_notitifcation = nil
+							end
+						})
+					end
+				end)
+			end)
+		end,
+		{description = "increase backlight", group = "utility"}),
+
+	-- Decrease screen backlight brightness
+    awful.key({}, "XF86MonBrightnessDown",
+		function()
+			awful.spawn.easy_async("brillo -U 5 -u 100000 -q", function()
+				awful.spawn.easy_async("brillo -G", function(brightness)
+					if brightness_notitifcation then
+						naughty.replace_text(brightness_notitifcation, "Brightness", brightness)
+					else
+						brightness_notitifcation = naughty.notify({
+							title = "Brightness",
+							text = brightness,
+							destroy = function ()
+								brightness_notitifcation = nil
+							end
+						})
+					end
+				end)
+			end)
+		end,
+		{description = "decrease backlight", group = "utility"})
+)
 
 ------------------------------------------
 --		Set all global keybindings		--
