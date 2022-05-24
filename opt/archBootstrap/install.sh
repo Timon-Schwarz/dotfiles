@@ -453,14 +453,11 @@ systemctl enable acpid
 # Check if the system is a laptop
 if [ "$IS_LAPTOP" = true ]; then
 	# Install laptop power control packages
-	pacman -S tlp
+	pacman -S auto-cpufreq
 
 	# Enable laptop power control service
-	systemctl enable tlp
+	systemctl enable auto-cpufreq
 fi
-
-# Install graphical power control package
-# TODO
 
 
 
@@ -653,6 +650,14 @@ pacman -S gparted
 #########################
 # Install database packages
 pacman -S mariadb
+
+
+
+#########################
+#		Monitoring		#
+#########################
+# Install monitoring packages
+pacman -S htop nvtop
 
 
 
