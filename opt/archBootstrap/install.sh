@@ -616,10 +616,10 @@ pacman -S handbrake
 
 
 #####################
-#		Latex		#
+#		LaTeX		#
 #####################
-# Install latex packages
-# TODO
+# Install LaTeX packages
+pacman -S texive-most
 
 
 
@@ -629,6 +629,14 @@ pacman -S handbrake
 # Install communication packages
 pacman -S dicord
 paru -S teams
+
+
+
+#################################
+#		Reduced eye strain		#
+#################################
+# Install red light reduction packages
+pacman -S redshift
 
 
 
@@ -645,14 +653,6 @@ pacman -S gparted
 #########################
 # Install database packages
 pacman -S mariadb
-
-
-
-#####################
-#		LaTeX		#
-#####################
-# Install LaTeX packages
-pacman -S texive-most
 
 
 
