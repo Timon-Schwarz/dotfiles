@@ -528,8 +528,8 @@ pacman -S volumeicon
 #############################
 #		File manager		#
 #############################
-# Install grahical file manger packages # TODO: maybe switch?
-pacman -S thunar thunar-archive-plugin thunar-volman
+# Install grahical file manger packages
+pacman -S pcmanfm
 
 
 
