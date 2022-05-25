@@ -537,7 +537,7 @@ pacman -S pcmanfm
 #		Archive		#
 #####################
 # Install graphical archive packages
-pacman -S xarchiver
+pacman -S file-roller
 
 
 
