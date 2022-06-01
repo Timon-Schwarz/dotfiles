@@ -418,7 +418,7 @@ pacman -S gtk2 gtk3 gtk4 gtk-engine-murrine
 pacman -S qt5-base qt6-base qt5-svg qt6-svg
 
 # Install QT GTK style packages
-paru -S qt5-styleplugins qt6gtk2
+paru -S qt6gtk2 qt5-styleplugins
 
 
 
