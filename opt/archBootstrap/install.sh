@@ -620,6 +620,14 @@ pacman -S texive-most
 
 
 
+#####################
+#		Office		#
+#####################
+# Install office packages
+paru -S onlyoffice
+
+
+
 #############################
 #		Communication		#
 #############################
