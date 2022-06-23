@@ -521,7 +521,7 @@ paru -S hardcode-tray
 pacman -S network-manager-applet
 
 # Install sound try icon packages
-pacman -S volumeicon
+paru -S volctl
 
 
 
@@ -554,6 +554,22 @@ pacman -S zathura zathura-pdf-poppler
 #############################
 # Install image viewer packages
 pacman -S feh
+
+
+
+#############################
+#		Video player		#
+#############################
+# Install video player packages
+pacman -S mpv
+
+
+
+#############################
+#		Musik streaming		#
+#############################
+# Install music streaming packages
+paru -S spotify-adblock-git
 
 
 
@@ -699,11 +715,27 @@ systemctl enable vmware-usbarbitrator
 
 
 
+#####################
+#		GNS3		#
+#####################
+# Install GNS3 packages
+paru -S gns3-gui
+
+
+
 #########################
 #		Windows VM		#
 #########################
 # Update the hugepageszize
 sed -i "s/\(vm.nr_hugepages\s=\s\)\(.*\)/\1$NR_HUGEPAGES/" "/etc/sysctl.d/40-hugepage.conf"
+
+
+
+#####################
+#		Memory		#
+#####################
+# Install flashcard packages
+paru -S anki
 
 
 
