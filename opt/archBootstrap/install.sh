@@ -723,19 +723,18 @@ systemctl enable vmware-usbarbitrator
 
 
 
-#####################
-#		GNS3		#
-#####################
-# Install GNS3 packages
+#####################################
+#		Network administrator		#
+#####################################
+# Install network virtualization packages
 paru -S gns3-gui
 
-
-
-#########################
-#		Monitoring		#
-#########################
 # Install monitoring packages
 pacman -S wireshark-qt
+
+# Make wireshark available in gns3
+mkdir ~/GNS3/wireshark
+ln -s /usr/bin/wireshark ~/GNS3/wireshark/
 
 
 
