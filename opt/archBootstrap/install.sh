@@ -653,6 +653,14 @@ paru -S teams
 
 
 
+#########################
+#		Cloud sync		#
+#########################
+# Install cloud sync packages
+pacman -S rclone
+
+
+
 #################################
 #		Reduced eye strain		#
 #################################
@@ -720,6 +728,14 @@ systemctl enable vmware-usbarbitrator
 #####################
 # Install GNS3 packages
 paru -S gns3-gui
+
+
+
+#########################
+#		Monitoring		#
+#########################
+# Install monitoring packages
+pacman -S wireshark-qt
 
 
 
