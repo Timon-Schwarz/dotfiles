@@ -735,6 +735,7 @@ pacman -S wireshark-qt
 # Make wireshark available in gns3
 mkdir ~/GNS3/wireshark
 ln -s /usr/bin/wireshark ~/GNS3/wireshark/
+sudo chmod +x /usr/bin/dumpcap
 
 
 
