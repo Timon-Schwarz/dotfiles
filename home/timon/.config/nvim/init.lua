@@ -1,0 +1,8 @@
+require "config.options"
+require "config.keymaps"
+require "config.plugins"
+require "config.vimtex"
+require "config.colorscheme"
+require "config.vim-airline"
+require "config.vim-airline-themes"
+require "config.nvimtree"
