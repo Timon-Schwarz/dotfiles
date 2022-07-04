@@ -191,7 +191,7 @@ globalkeys = {}
 ------------------------------------------
 globalkeys = gears.table.join(globalkeys,
 	-- Show awesome keybindings
-    awful.key({modkey}, "k",
+    awful.key({modkey}, "b",
 		hotkeys_popup.show_help,
 		{description="show awesome keybindings", group="awesome"}),
 
@@ -301,14 +301,14 @@ globalkeys = gears.table.join(globalkeys,
     -- Focus next screen
     awful.key({modkey}, "l",
 		function()
-			awful.screen.focus(1)
+			awful.screen.focus_relative(1)
 		end,
 		{description = "focus next", group = "screen"}),
 
     -- Focus previous screen
     awful.key({modkey}, "h",
 		function()
-			awful.screen.focus(2)
+			awful.screen.focus_relative(-1)
 		end,
 		{description = "focus previous", group = "screen"})
 )
@@ -497,10 +497,17 @@ clientkeys = gears.table.join(clientkeys,
 		end,
 		{description = "kill client", group = "client"}),
 
-	-- Move to next screen
-    awful.key({modkey}, "m",
+	-- Move to previous screen
+    awful.key({modkey, "Shift"}, "h",
 		function(c)
-			c:move_to_screen()
+			c:move_to_screen(-1)
+		end,
+		{description = "move to previous screen", group = "client"}),
+
+	-- Move to next screen
+    awful.key({modkey, "Shift"}, "l",
+		function(c)
+			c:move_to_screen(1)
 		end,
 		{description = "move to next screen", group = "client"})
 )
