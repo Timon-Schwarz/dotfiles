@@ -161,6 +161,8 @@ pacman -S git git-filter-repo
 # Install editor packages
 pacman -S vim neovim
 
+# Install python support for neovim
+paru -S python-pynvim
 
 
 #############################
