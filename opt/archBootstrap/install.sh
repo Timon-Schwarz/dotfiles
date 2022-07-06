@@ -155,27 +155,6 @@ pacman -S git git-filter-repo
 
 
 
-#####################
-#		Editors		#
-#####################
-# Install editor packages
-pacman -S vim neovim
-
-# Install python support for neovim
-paru -S python-pynvim
-
-
-#############################
-#		Package manager		#
-#############################
-# Install package manager packages
-sudo pacman -S pacman-contrib
-
-# Periodically remove old cached packages
-systemctl enable paccache.timer
-
-
-
 #########################
 #		AUR helper		#
 #########################
@@ -200,6 +179,31 @@ paru -S snapd
 
 # Start snap daemon when needed
 systemctl enable --now snapd.socket
+
+
+
+#############################
+#		Package manager		#
+#############################
+# Install package manager packages
+sudo pacman -S pacman-contrib
+
+# Install grafical package manager frontend
+sudo paru -S bauh axel wget
+
+# Periodically remove old cached packages
+systemctl enable paccache.timer
+
+
+
+#####################
+#		Editors		#
+#####################
+# Install editor packages
+pacman -S vim neovim
+
+# Install python support for neovim
+paru -S python-pynvim
 
 
 
@@ -294,6 +298,7 @@ pacman -S strongswan
 
 # Install openVPN VPN packages
 # TODO
+
 
 
 #########################
@@ -514,6 +519,7 @@ pacman -S papirus-icon-theme
 
 # Install hard coded tray icons fix packages
 paru -S hardcode-tray
+
 
 
 #########################
