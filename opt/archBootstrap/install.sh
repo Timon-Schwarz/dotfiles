@@ -189,7 +189,7 @@ systemctl enable --now snapd.socket
 sudo pacman -S pacman-contrib
 
 # Install grafical package manager frontend
-sudo paru -S bauh axel wget
+sudo paru -S bauh rebuild-detector axel wget
 
 # Periodically remove old cached packages
 systemctl enable paccache.timer
