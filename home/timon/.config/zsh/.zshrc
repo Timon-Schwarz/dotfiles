@@ -22,7 +22,7 @@ if zmodload zsh/terminfo && (( terminfo[colors] >= 256 )); then
 	source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 
 	# Source the prompt
-	[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+	[[ -f "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.p10k.zsh" ]] && source "${XDG_CONFIG_HOME:-$HOME/.config}/zsh/.p10k.zsh"
 fi
 
 
@@ -67,7 +67,7 @@ zmodload zsh/complist
 zstyle ':completion:*' menu select
 zstyle :compinstall filename "$HOME/.zshrc"
 zstyle ':completion::complete:*' gain-privileges 1
-compinit
+compinit -d "$XDG_CACHE_HOME"/zsh/zcompdump-"$ZSH_VERSION"
 _comp_options+=(globdots)
 
 

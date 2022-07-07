@@ -177,8 +177,8 @@ flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.f
 # Install snap packages
 paru -S snapd
 
-# Start snap daemon when needed
-systemctl enable --now snapd.socket
+# Start snap daemon
+systemctl enable --now snapd
 
 
 
@@ -196,11 +196,18 @@ systemctl enable paccache.timer
 
 
 
+#####################################
+#       Digital house keeping       #
+#####################################
+paru -S xdg-ninja
+
+
+
 #####################
 #		Editors		#
 #####################
 # Install editor packages
-pacman -S vim neovim
+pacman -S neovim
 
 # Install python support for neovim
 paru -S python-pynvim
