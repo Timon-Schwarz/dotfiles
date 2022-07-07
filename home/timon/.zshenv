@@ -16,6 +16,7 @@ export XDG_STATE_HOME=$HOME/.local/state
 export XDG_CACHE_HOME=$HOME/.cache
 
 # Home cleanup
+export ZDOTDIR="$HOME"/.config/zsh
 export HISTFILE="${XDG_STATE_HOME}"/bash/history
 export CARGO_HOME="$XDG_DATA_HOME"/cargo
 export CUDA_CACHE_PATH="$XDG_CACHE_HOME"/nv
