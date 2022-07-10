@@ -221,7 +221,7 @@ paru -S python-pynvim
 pacman -S bash bash-completion
 
 # Install zsh packages
-pacman -S zsh zsh-theme-powerlevel10k zsh-syntax-highlighting
+pacman -S zsh zsh-theme-powerlevel10k zsh-syntax-highlighting zsh-autosuggestions
 
 # Change default shell
 chsh -s /bin/zsh root
