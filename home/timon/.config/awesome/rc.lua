@@ -203,7 +203,28 @@ globalkeys = gears.table.join(globalkeys,
 	-- Quit awesome
     awful.key({ modkey, "Control" }, "q",
 		awesome.quit,
-        {description = "quit awesome", group = "awesome"})
+        {description = "quit awesome", group = "awesome"}),
+
+    -- Toggle notifications
+    awful.key({ modkey }, "n",
+        function()
+            if naughty.is_suspended() then
+                naughty.destroy_all_notifications()
+                naughty.resume()
+                naughty.notify({
+                    preset = naughty.config.presets.normal,
+                    title = "Notifications enabled!"
+	            })
+            else
+                naughty.destroy_all_notifications()
+                naughty.notify({
+                    preset = naughty.config.presets.normal,
+                    title = "Notifications disabled!"
+	            })
+                naughty.suspend()
+            end
+        end,
+        {description = "Toggle notifications", group = "awesome"})
 )
 
 
@@ -255,7 +276,6 @@ for i = 1, 9 do
 			{description = "move client to tag #"..i, group = "tag"})
 	)
 end
-
 
 
 
@@ -435,6 +455,13 @@ globalkeys = gears.table.join(globalkeys,
 					end
 				end)
 			end)
+		end,
+		{description = "increase backlight", group = "utility"}),
+
+    -- Increase screen backlight brightness
+    awful.key({modkey, "Shift"}, "v",
+		function()
+			awful.spawn.with_shell("xclip -selection clipboard -out | tr \\n \\r | xdotool selectwindow windowfocus type --delay 50 --window %@ --file -")
 		end,
 		{description = "increase backlight", group = "utility"}),
 
