@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 set -e
 set -x
 
@@ -8,14 +8,14 @@ set -x
 #		Variables		#
 #########################
 # Set variables
-CURRENT_USERNAME='timon'	# Do not change this
+CURRENT_USERNAME='timon'    # this is the name used in this repository
 TIMEZONE='Europe/Vienna'
 MIRROR_COUNTRIES='Austria,Germany'
 VCONSOLE_KEYBOARD_LAYOUT='de-latin1-nodeadkeys'
 X11_KEYBOARD_LAYOUT='at'
 X11_KEYBOARD_VARIANT='nodeadkeys'
 X11_KEYBOARD_MODEL='pc105'
-USERNAME=timon
+USERNAME='timon'
 ROOT_PASSWORD=''
 IS_LAPTOP='true'
 GIT_USERNAME='Timon-Schwarz'
@@ -105,6 +105,9 @@ git config --global user.name "$GIT_USERNAME"
 
 # Update git username
 git config --global user.email "$GIT_EMAIL"
+
+# Change default branche name
+git config --global init.defaultBranch "main"
 
 # Update remote repository
 sed -i "s/\(url\s=\s\)\(.*\)/\1$GIT_REMOTE_DOTFILE_REPOSITORY/" "/home/$USERNAME/.bare-repositories/dotfiles/git/config"
@@ -326,7 +329,8 @@ systemctl enable firewalld
 #		Remote management		#
 #################################
 # Install remote management packages
-pacman -S openssh virt-viewer
+pacman -S openssh virt-viewer remmina
+pacman -S rustdesk
 
 # Enable ssh deamon
 systemctl enable sshd
@@ -348,7 +352,7 @@ pacman -S pavucontrol qpwgraph
 #		Bluetooth		#
 #########################
 # Install Bluetooth packages
-pacman -S bluez bluez-utils
+pacman -S bluez bluez-utils blueberry
 
 # Start Bluetooth service on boot
 systemctl enable bluetooth
@@ -705,6 +709,14 @@ pacman -S mariadb
 #########################
 # Install monitoring packages
 pacman -S htop nvtop
+
+
+
+#################################
+#       ISO manipulation        #
+#################################
+# Install iso manipulation packages
+pacman -S cdrkit
 
 
 
