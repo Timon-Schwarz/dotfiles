@@ -517,6 +517,11 @@ clientkeys = gears.table.join(clientkeys,
         end,
 		{description = "toggle fullscreen", group = "client"}),
 
+--    -- Magnify client
+--        awful.key({ altkey, "Shift" }, "m",
+--            lain.util.magnify_client,
+--            {description = "magnify client", group = "client"}),
+
 	-- Kill client
     awful.key({modkey}, "q",
 		function(c)
@@ -584,7 +589,8 @@ awful.rules.rules = {
             keys = clientkeys,
             buttons = clientbuttons,
             screen = awful.screen.focused,
-            placement = awful.placement.no_overlap+awful.placement.no_offscreen
+            placement = awful.placement.no_overlap+awful.placement.no_offscreen,
+            maximized = false
 		}
     },
 
