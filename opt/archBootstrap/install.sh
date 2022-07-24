@@ -287,7 +287,7 @@ pacman -S samba smbclient
 #		Networking		#
 #########################
 # Install networking packages
-pacman -S networkmanager wireless_tools wpa_supplicant inetutils dnsutils avahi nss-mdns bridge-utils dnsmasq bind openbsd-netcat
+pacman -S networkmanager wireless_tools wpa_supplicant inetutils dnsutils avahi nss-mdns bridge-utils dnsmasq bind openbsd-netcat openresolv
 
 # Start NetworkManager on boot
 systemctl enable NetworkManager
